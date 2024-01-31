@@ -8,6 +8,15 @@ public class DetailedBookDto {
     private Genre genre;
     private String authorName;
     private String description;
+    private double averageRate;
+
+    public double getAverageRate() {
+        return averageRate;
+    }
+
+    public void setAverageRate(double averageRate) {
+        this.averageRate = averageRate;
+    }
 
     public Long getId() {
         return id;

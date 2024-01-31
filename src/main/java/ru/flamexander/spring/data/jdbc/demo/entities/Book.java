@@ -5,6 +5,8 @@ import org.springframework.data.annotation.PersistenceCreator;
 import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
+import java.util.List;
+
 @Table("BOOKS")
 public class Book {
     @Id
@@ -12,6 +14,18 @@ public class Book {
     private String title;
     private Long authorId;
     private Genre genre;
+
+    private List<Review> reviews;
+    private double averageRate;
+
+    public void setAverageRate(double averageRate) {
+        this.averageRate = averageRate;
+    }
+
+    public double getAverageRate() {
+        return averageRate;
+    }
+
     @MappedCollection(idColumn = "BOOK_ID")
     private BookDetails bookDetails;
 
@@ -53,6 +67,14 @@ public class Book {
 
     public void setGenre(Genre genre) {
         this.genre = genre;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 
     @PersistenceCreator
