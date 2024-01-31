@@ -1,8 +1,21 @@
 package ru.flamexander.spring.data.jdbc.demo.dtos;
 
+import jakarta.validation.constraints.Positive;
+
 public class BookDto {
     private Long id;
+
     private String title;
+
+    private double averageRate;
+
+    public double getAverageRate() {
+        return averageRate;
+    }
+
+    public void setAverageRate(double averageRate) {
+        this.averageRate = averageRate;
+    }
 
     public Long getId() {
         return id;

@@ -13,6 +13,7 @@ create table books (
     title varchar(255),
     genre varchar(255),
     author_id bigint,
+    average_rate double,
     foreign key (author_id) references authors (id)
 );
 
@@ -22,6 +23,17 @@ create table books_details (
     description varchar(255),
     foreign key (book_id) references books (id)
 );
+
+create table reviews (
+                         id bigserial primary key,
+                         book_id bigint,
+                         author_name varchar(255) not null,
+                         review_text varchar(1000),
+                         review_rate int check (review_rate >= 0 and review_rate <= 10),
+                         review_date date,
+                         foreign key (book_id) references books (id)
+);
+
 
 insert into categories (title) values ('Категория 1'), ('Категория 2'), ('Категория 3');
 
